@@ -747,11 +747,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 72px;
+            height: 120px;
+            padding: var(--space-lg) 0;
         }
 
         .header__logo {
-            font-size: var(--text-xl);
+            font-size: var(--text-2xl);
             font-weight: 700;
             letter-spacing: -0.02em;
             color: var(--color-black);
@@ -768,15 +769,16 @@
         @media (min-width: 768px) {
             .header__nav {
                 display: flex;
-                gap: var(--space-xl);
+                gap: var(--space-2xl);
             }
         }
 
         .header__nav a {
-            font-size: var(--text-sm);
+            font-size: var(--text-base);
             font-weight: 500;
             color: var(--color-gray-dark);
             position: relative;
+            padding: var(--space-sm) 0;
         }
 
         .header__nav a:hover {
@@ -803,10 +805,10 @@
             display: inline-flex;
             align-items: center;
             gap: var(--space-sm);
-            padding: var(--space-sm) var(--space-lg);
+            padding: var(--space-md) var(--space-xl);
             background: var(--color-primary);
             color: var(--color-white);
-            font-size: var(--text-sm);
+            font-size: var(--text-base);
             font-weight: 600;
             border-radius: 50px;
             transition: var(--transition-base);
@@ -846,7 +848,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: 112px;
+            padding-top: 160px;
             background: var(--color-white);
             position: relative;
             overflow: hidden;
@@ -2542,7 +2544,20 @@
 
         @media (min-width: 768px) {
             .footer__grid {
-                grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+                grid-template-columns: 1.5fr 2fr;
+                gap: var(--space-3xl);
+            }
+        }
+
+        .footer__links-wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xl);
+        }
+
+        @media (min-width: 768px) {
+            .footer__links-wrapper {
+                grid-template-columns: repeat(4, 1fr);
                 gap: var(--space-2xl);
             }
         }
@@ -2760,6 +2775,458 @@
             height: 34px;
             fill: white;
         }
+
+        /* ============================================
+           MOBILE MENU
+           ============================================ */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 320px;
+            height: 100vh;
+            background: var(--color-white);
+            z-index: 2000;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu.is-active {
+            right: 0;
+        }
+
+        .mobile-menu__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-xl);
+            border-bottom: 1px solid var(--color-gray-lighter);
+        }
+
+        .mobile-menu__logo {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: var(--color-black);
+        }
+
+        .mobile-menu__logo span {
+            color: var(--color-primary);
+        }
+
+        .mobile-menu__close {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-off-white);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .mobile-menu__close:hover {
+            background: var(--color-gray-lighter);
+        }
+
+        .mobile-menu__close svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-black);
+        }
+
+        .mobile-menu__nav {
+            flex: 1;
+            padding: var(--space-xl);
+            overflow-y: auto;
+        }
+
+        .mobile-menu__nav a {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg) 0;
+            font-size: var(--text-lg);
+            font-weight: 500;
+            color: var(--color-gray-dark);
+            border-bottom: 1px solid var(--color-gray-lighter);
+            transition: var(--transition-fast);
+        }
+
+        .mobile-menu__nav a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu__nav a:hover,
+        .mobile-menu__nav a:active {
+            color: var(--color-primary);
+        }
+
+        .mobile-menu__nav a svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.5;
+        }
+
+        .mobile-menu__footer {
+            padding: var(--space-xl);
+            background: var(--color-off-white);
+            border-top: 1px solid var(--color-gray-lighter);
+        }
+
+        .mobile-menu__cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            width: 100%;
+            padding: var(--space-lg);
+            background: var(--color-primary);
+            color: var(--color-white);
+            font-size: var(--text-base);
+            font-weight: 600;
+            border-radius: 12px;
+            margin-bottom: var(--space-lg);
+        }
+
+        .mobile-menu__cta svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .mobile-menu__contact {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .mobile-menu__contact a {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: var(--text-sm);
+            color: var(--color-gray-dark);
+        }
+
+        .mobile-menu__contact svg {
+            width: 16px;
+            height: 16px;
+            color: var(--color-primary);
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-overlay.is-active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ============================================
+           MOBILE RESPONSIVE STYLES
+           ============================================ */
+        @media (max-width: 767px) {
+            /* Hide top bar on mobile */
+            .top-bar {
+                display: none;
+            }
+
+            /* Header Mobile */
+            .header {
+                top: 0;
+            }
+
+            .header__inner {
+                height: 70px;
+                padding: 0;
+            }
+
+            .header__logo {
+                font-size: var(--text-lg);
+            }
+
+            .header__cta {
+                display: none;
+            }
+
+            .header__menu-btn {
+                width: 44px;
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--color-off-white);
+                border-radius: 10px;
+                padding: 0;
+            }
+
+            .header__menu-btn span {
+                width: 20px;
+                height: 2px;
+                background: var(--color-black);
+                position: absolute;
+                transition: all 0.3s ease;
+            }
+
+            .header__menu-btn span:nth-child(1) { transform: translateY(-6px); }
+            .header__menu-btn span:nth-child(2) { transform: translateY(0); }
+            .header__menu-btn span:nth-child(3) { transform: translateY(6px); }
+
+            /* Hero Mobile */
+            .hero {
+                min-height: auto;
+                padding-top: 90px;
+                padding-bottom: var(--space-3xl);
+            }
+
+            .hero__inner {
+                padding: var(--space-xl) 0;
+            }
+
+            .hero__badge {
+                font-size: 10px;
+                padding: var(--space-xs) var(--space-sm);
+            }
+
+            .hero__title {
+                font-size: var(--text-3xl);
+                line-height: 1.15;
+            }
+
+            .hero__subtitle {
+                font-size: var(--text-base);
+            }
+
+            .hero__cta-group {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+
+            .hero__cta-group .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero__seo-content {
+                gap: var(--space-lg);
+            }
+
+            .hero__seo-text {
+                font-size: var(--text-sm);
+                padding-left: var(--space-md);
+            }
+
+            /* Trust Bar Mobile */
+            .trust-bar {
+                padding: var(--space-2xl) 0;
+            }
+
+            .trust-bar__item {
+                padding: var(--space-lg);
+            }
+
+            .trust-bar__icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .trust-bar__icon svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .trust-bar__title {
+                font-size: var(--text-base);
+            }
+
+            /* Sections Mobile */
+            .section-label {
+                font-size: 10px;
+            }
+
+            .section-title {
+                font-size: var(--text-2xl);
+            }
+
+            .section-subtitle {
+                font-size: var(--text-base);
+            }
+
+            /* Services Grid Mobile */
+            .services {
+                padding: var(--space-3xl) 0;
+            }
+
+            .services__header {
+                margin-bottom: var(--space-2xl);
+            }
+
+            .services__grid {
+                gap: var(--space-lg);
+            }
+
+            .service-card__content {
+                padding: var(--space-lg);
+            }
+
+            .service-card__title {
+                font-size: var(--text-lg);
+            }
+
+            .service-card__btn {
+                padding: var(--space-md) var(--space-lg);
+                font-size: var(--text-sm);
+            }
+
+            /* Events Mobile */
+            .events {
+                padding: var(--space-3xl) 0;
+            }
+
+            .event-card__content {
+                padding: var(--space-lg);
+            }
+
+            .event-card__title {
+                font-size: var(--text-lg);
+            }
+
+            /* Testimonials Mobile */
+            .testimonials {
+                padding: var(--space-3xl) 0;
+            }
+
+            .testimonial-card {
+                padding: var(--space-xl);
+            }
+
+            .testimonial-card__text {
+                font-size: var(--text-base);
+            }
+
+            /* Coverage Mobile */
+            .coverage {
+                padding: var(--space-3xl) 0;
+            }
+
+            .coverage__list {
+                gap: var(--space-xs);
+            }
+
+            .coverage__item {
+                padding: var(--space-sm) var(--space-md);
+                font-size: var(--text-xs);
+            }
+
+            /* CTA Section Mobile */
+            .cta-section {
+                padding: var(--space-3xl) 0;
+            }
+
+            .cta-section__title {
+                font-size: var(--text-2xl);
+            }
+
+            /* Footer Mobile */
+            .footer {
+                padding: 0;
+            }
+
+            .footer__top {
+                padding: var(--space-xl) 0;
+            }
+
+            .footer__grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+
+            .footer__brand {
+                text-align: center;
+                padding-bottom: var(--space-lg);
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .footer__links-wrapper {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-xl) var(--space-lg);
+            }
+
+            .footer__column {
+                min-width: 0;
+            }
+
+            .footer__title {
+                font-size: var(--text-sm);
+                margin-bottom: var(--space-md);
+            }
+
+            .footer__links {
+                gap: var(--space-xs);
+            }
+
+            .footer__links a {
+                font-size: var(--text-xs);
+                padding: var(--space-xs) 0;
+            }
+
+            .footer__bottom {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+
+            /* WhatsApp Float Mobile */
+            .whatsapp-float {
+                width: 56px;
+                height: 56px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-float svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            /* Container padding Mobile */
+            .container {
+                padding-left: var(--space-lg);
+                padding-right: var(--space-lg);
+            }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 380px) {
+            .hero__title {
+                font-size: var(--text-2xl);
+            }
+
+            .section-title {
+                font-size: var(--text-xl);
+            }
+
+            .container {
+                padding-left: var(--space-md);
+                padding-right: var(--space-md);
+            }
+        }
     </style>
 </head>
 
@@ -2819,7 +3286,7 @@
                 </a>
 
                 <nav class="header__nav" role="navigation" aria-label="Navegación principal">
-                    <a href="#servicios">Servicios</a>
+                    <a href="servicios.html">Servicios</a>
                     <a href="#eventos">Eventos</a>
                     <a href="#cobertura">Cobertura</a>
                     <a href="#contacto">Contacto</a>
@@ -2829,7 +3296,7 @@
                     Cotizar ahora
                 </a>
 
-                <button class="header__menu-btn" aria-label="Abrir menú" aria-expanded="false">
+                <button class="header__menu-btn" aria-label="Abrir menú" aria-expanded="false" onclick="toggleMobileMenu()">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -2837,6 +3304,57 @@
             </div>
         </div>
     </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-overlay" onclick="toggleMobileMenu()"></div>
+    <nav class="mobile-menu" aria-label="Menú móvil">
+        <div class="mobile-menu__header">
+            <span class="mobile-menu__logo">Palomita<span>.mx</span></span>
+            <button class="mobile-menu__close" aria-label="Cerrar menú" onclick="toggleMobileMenu()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+        <div class="mobile-menu__nav">
+            <a href="index.html" onclick="toggleMobileMenu()">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                Inicio
+            </a>
+            <a href="servicios.html" onclick="toggleMobileMenu()">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+                Servicios
+            </a>
+            <a href="#eventos" onclick="toggleMobileMenu()">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+                Eventos
+            </a>
+            <a href="#cobertura" onclick="toggleMobileMenu()">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Cobertura
+            </a>
+            <a href="#contacto" onclick="toggleMobileMenu()">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                Contacto
+            </a>
+        </div>
+        <div class="mobile-menu__footer">
+            <a href="https://wa.me/5215512345678?text=Hola,%20quiero%20cotizar%20palomitas%20para%20mi%20evento" class="mobile-menu__cta" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.468l4.548-1.454A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.239 0-4.32-.726-6.006-1.957l-.36-.27-2.695.862.862-2.695-.27-.36A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                Cotizar por WhatsApp
+            </a>
+            <div class="mobile-menu__contact">
+                <a href="tel:+5215512345678">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    55 1234 5678
+                </a>
+                <a href="mailto:hola@palomita.mx">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    hola@palomita.mx
+                </a>
+            </div>
+        </div>
+    </nav>
 
     <main role="main">
         <!-- ============================================
@@ -2938,7 +3456,7 @@
                                 Alquiler de máquinas de palomitas profesionales con operador capacitado incluido. Servicio completo de renta de palomitas en CDMX y Estado de México con montaje, desmontaje y palomitas ilimitadas. El paquete más solicitado para eventos.
                             </p>
                         </div>
-                        <a href="#contacto" class="service-card__btn">Renta de máquinas de palomitas con operador</a>
+                        <a href="servicios.html#renta-operador" class="service-card__btn">Renta de máquinas de palomitas con operador</a>
                     </article>
 
                     <article class="service-card">
@@ -2951,7 +3469,7 @@
                                 Alquiler de máquinas de palomitas para operar tú mismo. Renta económica de máquina de palomitas con capacitación incluida e insumos. Ideal para negocios temporales, bazares y eventos donde prefieras operarla personalmente.
                             </p>
                         </div>
-                        <a href="#contacto" class="service-card__btn">Renta de máquinas de palomitas sin operador</a>
+                        <a href="servicios.html#renta-sin-operador" class="service-card__btn">Renta de máquinas de palomitas sin operador</a>
                     </article>
 
                     <article class="service-card">
@@ -2964,7 +3482,7 @@
                                 Alquiler de carrito de palomitas estilo retro con máquina profesional incluida. Renta de carrito vintage de palomitas con operador y palomitas ilimitadas. Servicio premium de carrito de palomitas para eventos elegantes y fotos memorables.
                             </p>
                         </div>
-                        <a href="#contacto" class="service-card__btn">Renta de carrito de palomitas vintage</a>
+                        <a href="servicios.html#carrito-vintage" class="service-card__btn">Renta de carrito de palomitas vintage</a>
                     </article>
 
                     <article class="service-card">
@@ -2977,7 +3495,7 @@
                                 Renta de estación de palomitas completa con máquina profesional y barra de toppings. Servicio de barra de palomitas con variedad de sabores y aderezos. Alquiler de mesa de palomitas decorada para eventos temáticos y fiestas.
                             </p>
                         </div>
-                        <a href="#contacto" class="service-card__btn">Barra de palomitas y toppings</a>
+                        <a href="servicios.html#barra-toppings" class="service-card__btn">Barra de palomitas y toppings</a>
                     </article>
 
                     <article class="service-card">
@@ -2990,7 +3508,7 @@
                                 Servicio de palomitas gourmet con máquina profesional: caramelo, queso cheddar, chamoy, chile-limón, cajeta y mantequilla trufa. Renta de máquina de palomitas con sabores premium y recetas exclusivas para paladares exigentes.
                             </p>
                         </div>
-                        <a href="#contacto" class="service-card__btn">Palomitas gourmet y sabores especiales</a>
+                        <a href="servicios.html#palomitas-gourmet" class="service-card__btn">Palomitas gourmet y sabores especiales</a>
                     </article>
 
                     <article class="service-card">
@@ -3003,7 +3521,7 @@
                                 Renta de máquinas de palomitas con bolsas personalizadas con tu logo o diseño. Servicio de palomitas con branding corporativo para marketing y eventos de marca. Empaques personalizados de palomitas para regalos empresariales en CDMX.
                             </p>
                         </div>
-                        <a href="#contacto" class="service-card__btn">Bolsas de palomitas personalizadas</a>
+                        <a href="servicios.html#bolsas-personalizadas" class="service-card__btn">Bolsas de palomitas personalizadas</a>
                     </article>
 
                     <article class="service-card">
@@ -3016,7 +3534,7 @@
                                 Renta de máquinas de palomitas con paquete completo: máquina, operador, insumos ilimitados, montaje y desmontaje. Paquetes de palomitas por horas con todo incluido. Alquiler de servicio de palomitas sin preocupaciones para tu evento.
                             </p>
                         </div>
-                        <a href="#contacto" class="service-card__btn">Paquetes de palomitas todo incluido</a>
+                        <a href="servicios.html#paquetes" class="service-card__btn">Paquetes de palomitas todo incluido</a>
                     </article>
 
                     <article class="service-card">
@@ -3029,7 +3547,7 @@
                                 Venta de insumos para máquinas de palomitas: maíz palomero premium, aceite de coco, sal especial y saborizantes. Distribuidores de consumibles para palomitas en CDMX. Compra insumos de palomitas al mayoreo para tu negocio o evento.
                             </p>
                         </div>
-                        <a href="#contacto" class="service-card__btn">Venta de insumos para palomitas</a>
+                        <a href="servicios.html#insumos" class="service-card__btn">Venta de insumos para palomitas</a>
                     </article>
 
                     <article class="service-card">
@@ -3042,7 +3560,7 @@
                                 Venta de máquinas de palomitas comerciales e industriales para negocio. Máquinas de palomitas profesionales de 4oz, 6oz, 8oz y 16oz con garantía. Compra tu máquina de palomitas con capacitación y acceso a insumos incluido.
                             </p>
                         </div>
-                        <a href="#contacto" class="service-card__btn">Venta de máquinas de palomitas</a>
+                        <a href="servicios.html#venta-maquinas" class="service-card__btn">Venta de máquinas de palomitas</a>
                     </article>
                 </div>
             </div>
@@ -3808,60 +4326,63 @@
                         </div>
                     </div>
 
-                    <!-- Servicios Column -->
-                    <div class="footer__column">
-                        <h4>Servicios</h4>
-                        <nav class="footer__links">
-                            <a href="#servicios">Renta con operador</a>
-                            <a href="#servicios">Renta sin operador</a>
-                            <a href="#servicios">Carrito vintage</a>
-                            <a href="#servicios">Barra de palomitas</a>
-                            <a href="#servicios">Sabores gourmet</a>
-                            <a href="#servicios">Bolsas personalizadas</a>
-                            <a href="#servicios">Venta de máquinas</a>
-                            <a href="#servicios">Venta de insumos</a>
-                        </nav>
-                    </div>
+                    <!-- Links Wrapper for Mobile Grid -->
+                    <div class="footer__links-wrapper">
+                        <!-- Servicios Column -->
+                        <div class="footer__column">
+                            <h4 class="footer__title">Servicios</h4>
+                            <nav class="footer__links">
+                                <a href="servicios.html#renta-operador">Renta con operador</a>
+                                <a href="servicios.html#renta-sin-operador">Renta sin operador</a>
+                                <a href="servicios.html#carrito-vintage">Carrito vintage</a>
+                                <a href="servicios.html#barra-toppings">Barra de palomitas</a>
+                                <a href="servicios.html#palomitas-gourmet">Sabores gourmet</a>
+                                <a href="servicios.html#bolsas-personalizadas">Bolsas personalizadas</a>
+                                <a href="servicios.html#venta-maquinas">Venta de máquinas</a>
+                                <a href="servicios.html#insumos">Venta de insumos</a>
+                            </nav>
+                        </div>
 
-                    <!-- Eventos Column -->
-                    <div class="footer__column">
-                        <h4>Eventos</h4>
-                        <nav class="footer__links">
-                            <a href="#eventos">Bodas</a>
-                            <a href="#eventos">XV Años</a>
-                            <a href="#eventos">Fiestas infantiles</a>
-                            <a href="#eventos">Corporativos</a>
-                            <a href="#eventos">Graduaciones</a>
-                            <a href="#eventos">Baby showers</a>
-                            <a href="#eventos">Escuelas</a>
-                            <a href="#eventos">Activaciones BTL</a>
-                        </nav>
-                    </div>
+                        <!-- Eventos Column -->
+                        <div class="footer__column">
+                            <h4 class="footer__title">Eventos</h4>
+                            <nav class="footer__links">
+                                <a href="#eventos">Bodas</a>
+                                <a href="#eventos">XV Años</a>
+                                <a href="#eventos">Fiestas infantiles</a>
+                                <a href="#eventos">Corporativos</a>
+                                <a href="#eventos">Graduaciones</a>
+                                <a href="#eventos">Baby showers</a>
+                                <a href="#eventos">Escuelas</a>
+                                <a href="#eventos">Activaciones BTL</a>
+                            </nav>
+                        </div>
 
-                    <!-- Cobertura Column -->
-                    <div class="footer__column">
-                        <h4>CDMX</h4>
-                        <nav class="footer__links">
-                            <a href="#cobertura">Polanco</a>
-                            <a href="#cobertura">Santa Fe</a>
-                            <a href="#cobertura">Del Valle</a>
-                            <a href="#cobertura">Condesa</a>
-                            <a href="#cobertura">Coyoacán</a>
-                            <a href="#cobertura">Lomas</a>
-                        </nav>
-                    </div>
+                        <!-- Cobertura Column -->
+                        <div class="footer__column">
+                            <h4 class="footer__title">CDMX</h4>
+                            <nav class="footer__links">
+                                <a href="#cobertura">Polanco</a>
+                                <a href="#cobertura">Santa Fe</a>
+                                <a href="#cobertura">Del Valle</a>
+                                <a href="#cobertura">Condesa</a>
+                                <a href="#cobertura">Coyoacán</a>
+                                <a href="#cobertura">Lomas</a>
+                            </nav>
+                        </div>
 
-                    <!-- Estado de México Column -->
-                    <div class="footer__column">
-                        <h4>Edo. México</h4>
-                        <nav class="footer__links">
-                            <a href="#cobertura">Interlomas</a>
-                            <a href="#cobertura">Satélite</a>
-                            <a href="#cobertura">Huixquilucan</a>
-                            <a href="#cobertura">Tecamachalco</a>
-                            <a href="#cobertura">Metepec</a>
-                            <a href="#cobertura">Naucalpan</a>
-                        </nav>
+                        <!-- Estado de México Column -->
+                        <div class="footer__column">
+                            <h4 class="footer__title">Edo. México</h4>
+                            <nav class="footer__links">
+                                <a href="#cobertura">Interlomas</a>
+                                <a href="#cobertura">Satélite</a>
+                                <a href="#cobertura">Huixquilucan</a>
+                                <a href="#cobertura">Tecamachalco</a>
+                                <a href="#cobertura">Metepec</a>
+                                <a href="#cobertura">Naucalpan</a>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3915,6 +4436,27 @@
 
     <!-- JavaScript -->
     <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const mobileOverlay = document.querySelector('.mobile-overlay');
+            const body = document.body;
+
+            mobileMenu.classList.toggle('is-active');
+            mobileOverlay.classList.toggle('is-active');
+            body.style.overflow = mobileMenu.classList.contains('is-active') ? 'hidden' : '';
+        }
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const mobileMenu = document.querySelector('.mobile-menu');
+                if (mobileMenu.classList.contains('is-active')) {
+                    toggleMobileMenu();
+                }
+            }
+        });
+
         // FAQ Accordion
         document.querySelectorAll('.faq__question').forEach(button => {
             button.addEventListener('click', () => {
